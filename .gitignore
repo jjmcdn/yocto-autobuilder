@@ -20,19 +20,8 @@ config/autobuilder.conf
 .cfg
 
 TODO
-yocto-controller/http.log
-yocto-controller/controller.cfg
-yocto-controller/state.sqlite
-yocto-controller/twistd.log*
-yocto-controller/buildbot.tac
-yocto-worker/build-appliance/build(newcommits)
-yocto-worker/buildbot.tac
-yocto-worker/janitor.log
-yocto-worker/nightly-x86/.buildbot-sourcedata-YnVpbGQ=
-yocto-worker/nightly/build(newcommits)
-yocto-worker/twistd.hostname
-yocto-worker/twistd.log*
-yocto-worker/twistd.pid
+yocto-controller
+yocto-worker
 
 # This gets updated on every yocto-setup-autobuilder so should be ignored #
 # for nearly everyone.                                                    #

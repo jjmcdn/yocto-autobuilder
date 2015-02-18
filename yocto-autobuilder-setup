@@ -62,6 +62,25 @@ export OGIT_TRASH_CRON_TIME="0 0 * * *"
 export OGIT_TRASH_NICE_LEVEL="19"
 HOST_ADDR=$(hostname -I)
 
+#########################################
+#
+# Create a new controller/worker configuation based on our templates if we don't
+# already have one configured here.
+#
+#########################################
+if [ ! -d "${PWD}/yocto-controller" ]; then
+    echo ""
+    echo "Creating yocto-controller/ from yocto-controller.template/"
+    echo ""
+    /bin/cp -R yocto-controller.template yocto-controller
+fi
+if [ ! -d "${PWD}/yocto-worker" ]; then
+    echo ""
+    echo "Creating yocto-worker/ from yocto-worker.template/"
+    echo ""
+    /bin/cp -R yocto-worker.template yocto-worker
+fi
+
 ##########################
 #
 # Check to see if we've got a username/password set
@@ -129,6 +148,24 @@ if [  ! -d  "./buildset-config" ]; then
     /bin/cp -R buildset-config.controller buildset-config
 fi
 
+#########################################
+#
+# If there is already a state.sqlite file in the controller directory, it may
+# need upgrading.  Inform the user about this.  This command is run
+# automatically the first time it is run on a pristine configuration.  See
+# below.
+#
+#########################################
+if [ -f ]; then
+    echo ""
+    echo "An existing yocto-controller/state.sqlite has been found."
+    echo "If you have changed your configuration since the last time"
+    echo "you sourced this setup script, you will most likely need to"
+    echo "update it.  The command you probably want is:"
+    echo ""
+    echo "\tbuildbot upgrade-master ${PWD}/yocto-controller"
+    echo ""
+fi
 
 if [ -n "${config_check:+x}" ]; then
     echo ""
