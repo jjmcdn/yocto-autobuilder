@@ -37,7 +37,7 @@ if len(args) != 2 or (sys.argv[1] != "both" and sys.argv[1] != "controller" and 
     You must specify if you wish to start controller, worker or both. 
    
     """ + usage )
-AB_BASE=os.path.dirname(os.path.abspath(sys.argv[0]))
+AB_BASE=os.environ.get("YOCTO_AB_CONFIG_DIR")
 
 ################################################################################
 #
